@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="simple_claculator.css" />
+    <title>Simple Calculator</title>
+  </head>
+  <body>
+    <div id="toggle">
+      <i class="fa-solid fa-moon"></i>
+    </div>
+    <div class="calculator">
+      <div class="btns">
+        <div id="screen"></div>
+        <span id="clear">Clear</span>
+        <span>*</span>
+        <span>/</span>
+        <span>7</span>
+        <span>8</span>
+        <span>9</span>
+        <span>-</span>
+        <span>4</span>
+        <span>5</span>
+        <span>6</span>
+        <span id="plus">+</span>
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>0</span>
+        <span>00</span>
+        <span>.</span>
+        <span id="equal">=</span>
+      </div>
+    </div>
+    <script>
+      let btns = document.querySelector(".btns");
+      let btn = document.querySelectorAll("span");
+      let screen = document.getElementById("screen");
+      let toggle = document.getElementById("toggle");
+      let body = document.querySelector("body");
+      toggle.addEventListener("click", function () {
+        if (toggle.innerHTML === `<i class="fa-solid fa-sun"></i>`) {
+          toggle.innerHTML = `<i class="fa-solid fa-moon"></i>`;
+          // toggle.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+        } else {
+          toggle.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+        }
+        body.classList.toggle("dark-mode");
+      });
+      for (let i = 0; i < btn.length; i++) {
+        btn[i].addEventListener("click", function () {
+          if (this.innerHTML == "=") {
+            screen.innerHTML = eval(screen.innerHTML).toFixed(2);
+          } else {
+            if (this.innerHTML == "Clear") {
+              screen.innerHTML = "";
+            } else {
+              screen.innerHTML += this.innerHTML;
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
